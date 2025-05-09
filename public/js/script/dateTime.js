@@ -12,7 +12,7 @@ function updateDateTime() {
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
   
-    const formatted = `${dayName}, ${date} ${month} ${year}, ${hours}:${minutes}:${seconds}`;
+    const formatted = `${dayName}, ${date} ${month} ${year}, ${hours}:${minutes}:${seconds} (WIB)` ;
     document.getElementById('date-time').textContent = formatted;
   }
   
