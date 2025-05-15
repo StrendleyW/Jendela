@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 
+
 <head>
     <meta charset="UTF-8">
     <title>Jendela</title>
-    <link rel="stylesheet" href="{{ asset('css/pages/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/dashboard.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
@@ -26,9 +28,9 @@
         <!-- Header -->
         <div class="header">
             <div class="inner-header">
-                <div class="logo"><a href="#">JENDELA</a></div>
+                <div class="logo"><a href="home">JENDELA</a></div>
                 <div class="nav-links">
-                    <a href="#">DASHBOARD</a>
+                    <a href="home">DASHBOARD</a>
                     <a href="#">FACT CHECK</a>
                     <a href="#">ABOUT US</a>
                 </div>
@@ -79,7 +81,7 @@
                         <a href="#">
                             <img src="{{ asset('images/bbm.png') }}" alt="Berita Utama">
                             <div class="caption">
-                                Harga BBM Naik, Ini Kata Wali Kota Jakarta Untuk Mengatasi Hal Ini
+                                Harga BBM Naik, Ini Kata Wali K ota Jakarta Untuk Mengatasi Hal Ini
                             </div>
                         </a>
                     </div>
@@ -192,8 +194,45 @@
     </div>
     <script src="js/script/dateTime.js"></script>
 </body>
-<footer>
-    <div>test</div>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h2>JENDELA</h2>
+            <p>Media terpercaya untuk berita terkini, tajam, dan terpercaya dari seluruh Indonesia.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Navigasi</h3>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Top Picks</a></li>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Kontak Kami</h3>
+            <p>Email: tesjendela@coba.com</p>
+            <p>Telp: +62 123 4567 8910</p>
+            <p>Jl. Merdeka No.123, Jakarta</p>
+        </div>
+
+        <div class="footer-social">
+            <h3>Ikuti Kami</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 JENDELA. All rights reserved.</p>
+    </div>
 </footer>
 
 </html>
