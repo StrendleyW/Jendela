@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="id">
-
 
 <head>
     <meta charset="UTF-8">
-    <title>Jendela</title>
+    <title>{{ $news->title }}</title>
     <link rel="stylesheet" href="{{ asset('css/pages/berita.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -28,9 +26,9 @@
         <!-- Header -->
         <div class="header">
             <div class="inner-header">
-                <div class="logo"><a href="home">JENDELA</a></div>
+                <div class="logo"><a href="../home">JENDELA</a></div>
                 <div class="nav-links">
-                    <a href="home">DASHBOARD</a>
+                    <a href="../home">DASHBOARD</a>
                     <a href="#">FACT CHECK</a>
                     <a href="#">ABOUT US</a>
                 </div>
@@ -66,73 +64,22 @@
                 </h1>
 
                 <div class="writer-info">
-                    <span class="writer">Naufal Rafy</span>
+                    <span class="writer">{{ $news->writer}}</span>
                     <span class="span"> | </span>
                     <span class="rubic">Jendela Crew</span>
                 </div>
 
                 <div class="date">
-                    Kamis, 15 Mei 2025 11:34 WIB
+                    {{ $news->published_at->format('d M Y, H:i') }} WIB
                 </div>
 
                 <div class="image-news">
-                    <img src="images/bbm.png" alt="Aldy Maldini" />
+                    <img src="{{ asset($news->image) }}" alt="{{ $news->title }}" />
                 </div>
 
                 <div class="content-news">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra nisl vel eros
-                        imperdiet, at facilisis est convallis. </p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
-                    <p>Aliquam erat volutpat. Curabitur ut elit sed turpis dapibus porttitor. Fusce rhoncus convallis
-                        lacus,
-                        ac porttitor ligula.</p>
+                    {{-- <p>{{ $berita->isi }} </p> --}}
+                    <p>{!! nl2br(e($news->content_news)) !!}</p>
                 </div>
             </div>
             <aside class="sidebar">
@@ -199,7 +146,7 @@
             </aside>
         </div>
     </div>
-    <script src="js/script/dateTime.js"></script>
+    <script src="{{ asset('js/script/dateTime.js') }}"></script>
 </body>
 <footer class="site-footer">
     <div class="footer-container">
