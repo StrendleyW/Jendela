@@ -59,8 +59,7 @@
                 <div class="breadcrumb">TOP PICKS &nbsp; > &nbsp; BBM NAIK</div>
 
                 <h1 class="title-news">
-                    Harga BBM Naik, Ini Kata Wali Kota Jakarta Untuk Mengatasi Hal Ini testtestt estesttesttes
-                    testtesttestesttesttes
+                    {{ $news->title }}
                 </h1>
 
                 <div class="writer-info">
@@ -74,12 +73,13 @@
                 </div>
 
                 <div class="image-news">
-                    <img src="{{ asset($news->image) }}" alt="{{ $news->title }}" />
+                    <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}">
                 </div>
 
                 <div class="content-news">
                     {{-- <p>{{ $berita->isi }} </p> --}}
-                    <p>{!! nl2br(e($news->content_news)) !!}</p>
+                    <p>{!! nl2br(e((string) $news->content_news)) !!}
+                    </p>
                 </div>
             </div>
             <aside class="sidebar">

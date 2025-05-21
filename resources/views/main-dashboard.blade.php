@@ -145,7 +145,7 @@
                     <div class="latest-news-text">
                         <a href="#">
                             <div class="latest-news-caption">
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                {!! nl2br(e((string) ($news->content_news ?? ''))) !!}
                             </div>
                         </a>
                         <div class="latest-news-time">

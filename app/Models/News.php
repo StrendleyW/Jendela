@@ -21,7 +21,7 @@ class News extends Model
     {
         return $this->hasOnOrMany(Media::class);
     }
-
+    
     protected static function boot()
 {
     parent::boot();
@@ -34,5 +34,15 @@ class News extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
+
+    protected $fillable = [
+    'title',
+    'slug',
+    'writer',
+    'content_news',
+    'image',
+    'published_at',
+];
+
 }
 
