@@ -11,16 +11,16 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class News extends Model
 {
     // news<>media
-    public function media(): HasMany
-    {
-        return $this->hasMany(Media::class);
-    }
+    // public function media(): HasMany
+    // {
+    //     return $this->hasMany(Media::class);
+    // }
 
     // news<>media
-    public function category(): HasOneOrMany
-    {
-        return $this->hasOnOrMany(Media::class);
-    }
+    // public function category(): HasOneOrMany
+    // {
+    //     return $this->hasOnOrMany(Media::class);
+    // }
     
     protected static function boot()
 {

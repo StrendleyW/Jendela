@@ -119,74 +119,25 @@
 
         <div class="latest-news-content">
             <div class="inner-latest-news">
-                <div class="latest-news-container">
-                    <div class="latest-news-main">
-                        <a href="#">
-                            <img src="{{ asset('images/bbm.png') }}" alt="Berita Terbaru">
-                        </a>
-                    </div>
-                    <div class="latest-news-text">
-                        <a href="#">
-                            <div class="latest-news-caption">
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                @foreach ($latestNews as $news)
+                    <div class="latest-news-container">
+                        <div class="latest-news-main">
+                            <a href="news/{{$news->slug}}">
+                                <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}">
+                            </a>
+                        </div>
+                        <div class="latest-news-text">
+                            <a href="news/{{$news->slug}}">
+                                <div class="latest-news-caption">
+                                    {{ Str::limit($news->title, 100) }}
+                                </div>
+                            </a>
+                            <div class="latest-news-time">
+                                {{ $news->created_at->format('d M Y - H:i') }} WIB
                             </div>
-                        </a>
-                        <div class="latest-news-time">
-                            08 Mei 2025 - 14:32 WIB
                         </div>
                     </div>
-                </div>
-                <div class="latest-news-container">
-                    <div class="latest-news-main">
-                        <a href="#">
-                            <img src="{{ asset('images/bbm.png') }}" alt="Berita Terbaru">
-                        </a>
-                    </div>
-                    <div class="latest-news-text">
-                        <a href="#">
-                            <div class="latest-news-caption">
-                                {!! nl2br(e((string) ($news->content_news ?? ''))) !!}
-                            </div>
-                        </a>
-                        <div class="latest-news-time">
-                            08 Mei 2025 - 14:32 WIB
-                        </div>
-                    </div>
-                </div>
-                <div class="latest-news-container">
-                    <div class="latest-news-main">
-                        <a href="#">
-                            <img src="{{ asset('images/bbm.png') }}" alt="Berita Terbaru">
-                        </a>
-                    </div>
-                    <div class="latest-news-text">
-                        <a href="#">
-                            <div class="latest-news-caption">
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                            </div>
-                        </a>
-                        <div class="latest-news-time">
-                            08 Mei 2025 - 14:32 WIB
-                        </div>
-                    </div>
-                </div>
-                <div class="latest-news-container">
-                    <div class="latest-news-main">
-                        <a href="#">
-                            <img src="{{ asset('images/bbm.png') }}" alt="Berita Terbaru">
-                        </a>
-                    </div>
-                    <div class="latest-news-text">
-                        <a href="#">
-                            <div class="latest-news-caption">
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                            </div>
-                        </a>
-                        <div class="latest-news-time">
-                            08 Mei 2025 - 14:32 WIB
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

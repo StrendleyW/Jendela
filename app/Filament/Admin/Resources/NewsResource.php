@@ -41,6 +41,7 @@ public static function form(Form $form): Form
 
             Forms\Components\FileUpload::make('image')
                 ->image()
+                ->disk('public') 
                 ->directory('images')
                 ->required(),
 
@@ -57,7 +58,7 @@ public static function table(Table $table): Table
     return $table
         ->columns([
             Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-            Tables\Columns\ImageColumn::make('image')->circular(),
+            Tables\Columns\ImageColumn::make('image')->circular()->disk('public'),
             Tables\Columns\TextColumn::make('slug'),
             Tables\Columns\TextColumn::make('writer')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('published_at')->dateTime('d M Y H:i'),
