@@ -10,7 +10,7 @@
     font-family: 'Segoe UI', sans-serif;
     background-color: #fff;
     color: #000;
-    margin: 8px;
+    margin: 0px;
   }
 
 
@@ -57,11 +57,19 @@
     align-items: center;
   }
   
-  .header .logo a{
+  .header .logo {
     color: white;
     font-weight: bold;
     font-size: 40px;
     flex: 1;
+    text-decoration: none;
+  }
+
+  .header .logo a:link,
+  .header .logo a:visited,
+  .header .logo a:hover,
+  .header .logo a:active {
+    color: white;
   }
   
   .header .nav-links {
