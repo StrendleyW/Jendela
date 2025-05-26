@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 
-
 <head>
     <meta charset="UTF-8">
     <title>Jendela</title>
@@ -44,13 +43,25 @@
         <!-- Category Menu -->
         <div class="category-menu">
             <div class="inner-category">
-                <a href="#">Politic</a>
-                <a href="#">Food</a>
-                <a href="#">Entertainment</a>
-                <a href="#">Fashion</a>
-                <a href="#">Sport</a>
-                <a href="#">Ekonomi</a>
-                <a href="#">Technology</a>
+                {{-- Link Kategori yang Diperbarui --}}
+                <a href="{{ route('category.show', ['category' => 'politik']) }}">Politic</a>
+                <a href="{{ route('category.show', ['category' => 'food']) }}">Food</a>
+                <a href="{{ route('category.show', ['category' => 'entertainment']) }}">Entertainment</a>
+                <a href="{{ route('category.show', ['category' => 'fashion']) }}">Fashion</a>
+                <a href="{{ route('category.show', ['category' => 'sport']) }}">Sport</a>
+                <a href="{{ route('category.show', ['category' => 'ekonomi']) }}">Ekonomi</a>
+                <a href="{{ route('category.show', ['category' => 'technology']) }}">Technology</a>
+
+                {{-- Jika ingin mengambil kategori secara dinamis dari database di masa mendatang --}}
+                {{-- Perlu mengirimkan variabel $navCategories dari controller ke view ini --}}
+                {{-- Contoh: --}}
+                {{-- @isset($navCategories) --}}
+                {{--     @foreach($navCategories as $navCategory) --}}
+                {{--         <a href="{{ route('category.show', ['category' => $navCategory->slug]) }}"> --}}
+                {{--             {{ $navCategory->name }} --}}
+                {{--         </a> --}}
+                {{--     @endforeach --}}
+                {{-- @endisset --}}
             </div>
         </div>
 
