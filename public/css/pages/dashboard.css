@@ -57,7 +57,7 @@
     align-items: center;
   }
   
-  .header .logo {
+  .header .logo a {
     color: white;
     font-weight: bold;
     font-size: 40px;
@@ -465,10 +465,3 @@
   font-size: 14px;
   color: #aaa;
 }
-  
-
-
-
-
-  
-  
