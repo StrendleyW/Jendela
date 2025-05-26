@@ -36,8 +36,8 @@ public static function form(Form $form): Form
                 ->unique(ignoreRecord: true),
 
             Forms\Components\TextInput::make('writer')
-            ->required()
-            ->live(onBlur: true),
+                ->required()
+                ->live(onBlur: true),
 
             Forms\Components\FileUpload::make('image')
                 ->image()
@@ -51,6 +51,10 @@ public static function form(Form $form): Form
 
             Forms\Components\DateTimePicker::make('published_at')
                 ->required(),
+
+            Forms\Components\Toggle::make('is_top_pick')
+                ->label('Top Pick')
+                ->inline(false),
         ]);
 }
 public static function table(Table $table): Table
@@ -62,8 +66,12 @@ public static function table(Table $table): Table
             Tables\Columns\TextColumn::make('slug'),
             Tables\Columns\TextColumn::make('writer')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('published_at')->dateTime('d M Y H:i'),
+            Tables\Columns\IconColumn::make('is_top_pick')->boolean()->label('Top Pick'),
         ])
-        ->filters([])
+        ->filters([
+            Tables\Filters\TernaryFilter::make('is_top_pick')->label('Top Picks Only'),
+
+        ])
         ->actions([
             Tables\Actions\EditAction::make(),
         ])

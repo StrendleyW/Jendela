@@ -42,6 +42,7 @@ class News extends Model
     'content_news',
     'image',
     'published_at',
+    'is_top_pick',
 ];
 
 }

@@ -77,36 +77,32 @@
             <div class="inner">
                 <div class="news-container">
                     <!-- Berita Utama -->
-                    <div class="news-main">
-                        <a href="#">
-                            <img src="{{ asset('images/bbm.png') }}" alt="Berita Utama">
-                            <div class="caption">
-                                Harga BBM Naik, Ini Kata Wali K ota Jakarta Untuk Mengatasi Hal Ini
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Berita Samping -->
-                    <div class="news-side">
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('images/perampokan.png') }}" alt="Perampokan">
-                                <div class="caption">Pelaku Perampokan Bank Telah Diamankan</div>
+                    @if ($topPicks->isNotEmpty())
+                        @php
+                            $mainNews = $topPicks->first();
+                            $sideNews = $topPicks->skip(1);
+                        @endphp
+
+                        <div class="news-main">
+                            <a href="news/{{$mainNews->slug}}">
+                                <img src="{{ asset('storage/' . $mainNews->image) }}" alt="{{ $mainNews->title }}">
+                                <div class="caption">{{ $mainNews->title }}</div>
                             </a>
                         </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('images/kurma.png') }}" alt="Kurma">
-                                <div class="caption">Buah Bagus Untuk Berbuka</div>
-                            </a>
+
+                        <!-- Berita Samping -->
+                        <div class="news-side">
+                            @foreach ($sideNews as $news)
+                                <div class="item">
+                                    <a href="news/{{$news->slug}}">
+                                        <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}">
+                                        <div class="caption">{{ $news->title }}</div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
-                        <div class="item">
-                            <a href="#">
-                                <img src="{{ asset('images/cuaca.png') }}" alt="Hujan">
-                                <div class="caption">Hujan Surabaya Mendekati Tingkat Bahaya</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    @endif
+                </div>>
             </div>
         </div>
 

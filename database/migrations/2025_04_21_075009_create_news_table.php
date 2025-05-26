@@ -19,12 +19,20 @@ return new class extends Migration
             $table->text('content_news');
             // $table->dateTime('publisher_date'); 
             $table->string('image')->nullable(); // path gambar
+            $table->boolean('is_top_pick')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
             // $table->unsignedBigInteger('category_id');
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); //Referencing the id from categories table
         });
     }
+
+    public function down(): void
+{
+    Schema::table('news', function (Blueprint $table) {
+        $table->dropColumn('is_top_pick');
+    });
+}
 
     /**
      * Reverse the migrations.
