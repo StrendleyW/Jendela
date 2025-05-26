@@ -39,11 +39,20 @@ class News extends Model
     'title',
     'slug',
     'writer',
+    'name',
     'content_news',
     'image',
     'published_at',
     'is_top_pick',
+
+    
 ];
+
+
+public function category()
+{
+    return $this->belongsTo(Category::class);
+}
 
 }
 

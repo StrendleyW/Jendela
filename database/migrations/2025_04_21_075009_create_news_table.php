@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('writer');
+            $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
             $table->text('content_news');
             // $table->dateTime('publisher_date'); 
             $table->string('image')->nullable(); // path gambar
@@ -31,6 +32,8 @@ return new class extends Migration
 {
     Schema::table('news', function (Blueprint $table) {
         $table->dropColumn('is_top_pick');
+        $table->dropForeign(['category_id']);
+        $table->dropColumn('category_id');
     });
 }
 

@@ -35,6 +35,11 @@ public static function form(Form $form): Form
                 ->required()
                 ->unique(ignoreRecord: true),
 
+            Forms\Components\Select::make('category_id')
+                ->label('Category')
+                ->relationship('category', 'name') // relasi ke model Category, ambil field 'name'
+                ->required(),
+
             Forms\Components\TextInput::make('writer')
                 ->required()
                 ->live(onBlur: true),
@@ -67,9 +72,12 @@ public static function table(Table $table): Table
             Tables\Columns\TextColumn::make('writer')->searchable()->sortable(),
             Tables\Columns\TextColumn::make('published_at')->dateTime('d M Y H:i'),
             Tables\Columns\IconColumn::make('is_top_pick')->boolean()->label('Top Pick'),
+            Tables\Columns\TextColumn::make('category.name')->label('Category')->sortable()->searchable(),
+
         ])
         ->filters([
             Tables\Filters\TernaryFilter::make('is_top_pick')->label('Top Picks Only'),
+            Tables\Filters\SelectFilter::make('category')->relationship('category', 'name')->label('Filter by Category'),
 
         ])
         ->actions([

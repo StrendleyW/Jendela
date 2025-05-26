@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoryController;
 
 
 //dashboard
@@ -11,6 +11,9 @@ Route::get('/home', [DashboardController::class, 'index']);
 
 //detail berita
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('berita.show'); //slug dari judul
+
+//category
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category.show');
 
 // Tes local
 // Route::get('/news/{slug}', function ($slug) {
