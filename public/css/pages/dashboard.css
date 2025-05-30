@@ -14,36 +14,21 @@
   }
 
 
-.navbar,
-.top-bar,
+.content,
 .header,
 .category-menu {
   width: 100%;
 }
 
-  
-  /* Top Bar */
-
-  .top-bar {
-    background-color: hsl(0, 0%, 0%);
-    color: #ccc;
-    max-height: 25px;
-  }
-  
-  .top-bar a {
-    color: yellow;
-    text-decoration: none;
-  }
-  
-  .inner-top-bar {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   /* Header / Navbar */
+  .navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
   .header {
     background-color: #1a1a1a;
   }

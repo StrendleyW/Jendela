@@ -9,32 +9,34 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <!-- Header -->
-        <div class="header">
-            <div class="inner-header">
-                <div class="logo"><a href="/">JENDELA</a></div>
-                <div class="nav-links">
-                    <a href="/">DASHBOARD</a>
-                    <a href="#">FACT CHECK</a>
-                    <a href="#">ABOUT US</a>
-                </div>
-                <div class="search-container">
-                    <input type="text" placeholder="Search news...">
-                    <button>&#128269;</button>
+    <div class="content">
+        <div class="navbar">
+            <!-- Header -->
+            <div class="header">
+                <div class="inner-header">
+                    <div class="logo"><a href="/">JENDELA</a></div>
+                    <div class="nav-links">
+                        <a href="/">DASHBOARD</a>
+                        <a href="#">FACT CHECK</a>
+                        <a href="#">ABOUT US</a>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search news...">
+                        <button>&#128269;</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Category Menu -->
-        <div class="category-menu">
-            <div class="inner-category">
-                @foreach($navCategories as $navCategories)
-                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
-                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
-                        {{ $navCategories->name }}
-                    </a>
-                @endforeach
+            <!-- Category Menu -->
+            <div class="category-menu">
+                <div class="inner-category">
+                    @foreach($navCategories as $navCategories)
+                        <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
+                            class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
+                            {{ $navCategories->name }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
 

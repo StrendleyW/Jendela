@@ -10,53 +10,55 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="header">
-            <div class="inner-header">
-                <div class="logo"><a href="{{ url('/') }}">JENDELA</a></div> 
-                <div class="nav-links">
-                    <a href="{{ url('/') }}">DASHBOARD</a> 
-                    <a href="#">FACT CHECK</a>
-                    <a href="#">ABOUT US</a>
-                </div>
-                <div class="search-container">
-                    <input type="text" placeholder="Search news...">
-                    <button>&#128269;</button>
+    <div class="content">
+        <div class="navbar">
+            <div class="header">
+                <div class="inner-header">
+                    <div class="logo"><a href="{{ url('/') }}">JENDELA</a></div>
+                    <div class="nav-links">
+                        <a href="{{ url('/') }}">DASHBOARD</a>
+                        <a href="#">FACT CHECK</a>
+                        <a href="#">ABOUT US</a>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search news...">
+                        <button>&#128269;</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="category-menu">
-            <div class="inner-category">
-                @foreach($navCategories as $navCategories)
-                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
-                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
-                        {{ $navCategories->name }}
-                    </a>
-                @endforeach
+            <div class="category-menu">
+                <div class="inner-category">
+                    @foreach($navCategories as $navCategories)
+                        <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
+                            class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
+                            {{ $navCategories->name }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
 
         <div class="main-content-wrapper">
-            <div class="politic-category-container"> 
-                <h1 class="category-title">{{ strtoupper($category->name) }}</h1> 
+            <div class="politic-category-container">
+                <h1 class="category-title">{{ strtoupper($category->name) }}</h1>
                 <div class="article-list">
 
                     {{-- Loop untuk menampilkan berita --}}
                     @forelse ($newsList as $news)
                         <div class="article-item">
                             <div class="article-image">
-                                <a href="{{ url('news/' . $news->slug) }}"> 
+                                <a href="{{ url('news/' . $news->slug) }}">
                                     <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}">
                                 </a>
                             </div>
                             <div class="article-text-content">
                                 <h2 class="article-title">
-                                    <a href="{{ url('news/' . $news->slug) }}">{{ $news->title }}</a> 
+                                    <a href="{{ url('news/' . $news->slug) }}">{{ $news->title }}</a>
                                 </h2>
                                 <p class="article-meta">
-                                    <span class="article-date">{{ $news->published_at->format('d M Y') }}</span> | 
-                                    <span class="article-source">Oleh: {{ $news->writer }}</span> 
+                                    <span class="article-date">{{ $news->published_at->format('d M Y') }}</span> |
+                                    <span class="article-source">Oleh: {{ $news->writer }}</span>
                                 </p>
                             </div>
                         </div>
