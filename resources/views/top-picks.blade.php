@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Jendela - {{ $category->name }}</title> {{-- Judul dinamis --}}
+    <title>Jendela{{ $category->name }}</title> {{-- Judul dinamis --}}
     <link rel="stylesheet" href="{{ asset('css/pages/kategori.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -11,23 +11,11 @@
 
 <body>
     <div class="navbar">
-        <div class="top-bar">
-            <div class="inner-top-bar">
-                <span id="date-time"></span>
-                <div>
-                    Website Info : Maintenance Completed, thanks for the patience
-                </div>
-                <div>
-                    <a href="#">login</a> to access more features!
-                </div>
-            </div>
-        </div>
-
         <div class="header">
             <div class="inner-header">
-                <div class="logo"><a href="{{ url('/home') }}">JENDELA</a></div> 
+                <div class="logo"><a href="{{ url('/') }}">JENDELA</a></div> 
                 <div class="nav-links">
-                    <a href="{{ url('/home') }}">DASHBOARD</a> 
+                    <a href="{{ url('/') }}">DASHBOARD</a> 
                     <a href="#">FACT CHECK</a>
                     <a href="#">ABOUT US</a>
                 </div>

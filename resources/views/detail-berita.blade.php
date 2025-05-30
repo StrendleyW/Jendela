@@ -10,25 +10,12 @@
 
 <body>
     <div class="navbar">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="inner-top-bar">
-                <span id="date-time"></span>
-                <div>
-                    Website Info : Maintenance Completed, thanks for the patience
-                </div>
-                <div>
-                    <a href="#">login</a> to access more features!
-                </div>
-            </div>
-        </div>
-
         <!-- Header -->
         <div class="header">
             <div class="inner-header">
-                <div class="logo"><a href="../home">JENDELA</a></div>
+                <div class="logo"><a href="/">JENDELA</a></div>
                 <div class="nav-links">
-                    <a href="../home">DASHBOARD</a>
+                    <a href="/">DASHBOARD</a>
                     <a href="#">FACT CHECK</a>
                     <a href="#">ABOUT US</a>
                 </div>

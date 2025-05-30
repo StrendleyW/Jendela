@@ -11,27 +11,14 @@
 
 <body>
     <div class="navbar">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="inner-top-bar">
-                <span id="date-time"></span>
-                <div>
-                    Website Info : Maintenance Completed, thanks for the patience
-                </div>
-                <div>
-                    <a href="#">login</a> to access more features!
-                </div>
-            </div>
-        </div>
-
         <!-- Header -->
         <div class="header">
             <div class="inner-header">
-                <div class="logo"><a href="home">JENDELA</a></div>
+                <div class="logo"><a href="/">JENDELA</a></div>
                 <div class="nav-links">
-                    <a href="home">DASHBOARD</a>
+                    <a href="/">DASHBOARD</a>
                     <a href="#">FACT CHECK</a>
-                    <a href="#">ABOUT US</a>
+                    <a href="#" class="js-scroll-to-about">ABOUT US</a>
                 </div>
                 <div class="search-container">
                     <input type="text" placeholder="Search news...">
@@ -130,10 +117,11 @@
     </div>
     </div>
     <script src="js/script/dateTime.js"></script>
+    <script src="{{ asset('js/script/aboutUs.js') }}" defer></script>
 </body>
 <footer class="site-footer">
     <div class="footer-container">
-        <div class="footer-about">
+        <div class="footer-about" id="about-us">
             <h2>JENDELA</h2>
             <p>Media terpercaya untuk berita terkini, tajam, dan terpercaya dari seluruh Indonesia.</p>
         </div>
@@ -144,7 +132,7 @@
                 <li><a href="#">Beranda</a></li>
                 <li><a href="#">Top Picks</a></li>
                 <li><a href="#">Latest News</a></li>
-                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#" class=".js-scroll-to-about">Tentang Kami</a></li>
                 <li><a href="#">Kontak</a></li>
             </ul>
         </div>
