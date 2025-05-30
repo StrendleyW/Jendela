@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ $news->title }}</title>
+    <title>Jendela - {{ $news->title }}</title>
     <link rel="stylesheet" href="{{ asset('css/pages/berita.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -42,13 +42,12 @@
         <!-- Category Menu -->
         <div class="category-menu">
             <div class="inner-category">
-                <a href="#">Politic</a>
-                <a href="#">Food</a>
-                <a href="#">Entertainment</a>
-                <a href="#">Fashion</a>
-                <a href="#">Sport</a>
-                <a href="#">Ekonomi</a>
-                <a href="#">Technology</a>
+                @foreach($navCategories as $navCategories)
+                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
+                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
+                        {{ $navCategories->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
 
@@ -85,61 +84,35 @@
             <aside class="sidebar">
                 <!-- Kolom Berita Terpopuler -->
                 <div class="top-picks">
-                    <h3>Berita Terpopuler</h3>
+                    <h3>Top Picks</h3>
                     <ol>
-                        <li>
-                            <span class="nomor">#1</span><span class="judul"><a href="#">Bukan Editan Photoshop, Deretan
-                                    Foto Medis Bikin Melotot dan
-                                    Merinding</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#2</span>
-                            <span class="judul"><a href="#">Chip Diborong Arab Saudi, Harta Bos Nvidia Tembus Rp 1.900
-                                    T</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#3</span>
-                            <span class="judul"><a href="#">10 Jurusan Kuliah dengan Gaji Paling Tinggi Saat
-                                    Bekerja</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#4</span>
-                            <span class="judul"><a href="#">Spesifikasi Lengkap Nintendo Switch 2, Setara GTX 1050
-                                    Ti</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#5</span>
-                            <span class="judul"><a href="#">Kisah Mantan Presiden Termiskin di Dunia Jose Mujica Tak
-                                    Pakai HP</a></span>
-                        </li>
+                        @foreach ($topPicks as $news)
+                            <li>
+                                <span class="nomor">#{{$loop->iteration}}</span>
+                                <span class="judul">
+                                    <a href="/news/{{$news->slug}}">
+                                        {{ $news->title }}
+                                    </a>
+                                </span>
+                            </li>
+                        @endforeach
                     </ol>
                     <button class="btn-selengkapnya"><a href="#">Lihat Selengkapnya →</a></button>
                 </div>
+                {{-- quick nav side --}}
                 <div class="new-news">
                     <h3>Berita Terbaru</h3>
                     <ol>
-                        <li>
-                            <span class="nomor">#1</span><span class="judul"><a href="#">Bukan Editan Photoshop, Deretan
-                                    Foto Medis Bikin Melotot dan
-                                    Merinding</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#2</span>
-                            <span class="judul"><a href="#">Diborong Arab Saudi, Harta Bos Nvidia Tembus Rp 1.900
-                                    T</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#3</span><span class="judul"><a href="#">10 Jurusan Kuliah dengan Gaji
-                                    Paling Tinggi Saat Bekerja</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#4</span><span class="judul"><a href="#">Spesifikasi Lengkap Nintendo
-                                    Switch 2, Setara GTX 1050 Ti</a></span>
-                        </li>
-                        <li>
-                            <span class="nomor">#5</span><span class="judul"><a href="#">Kisah Mantan Presiden Termiskin
-                                    di Dunia Jose Mujica Tak Pakai HP</a></span>
-                        </li>
+                        @foreach ($latestNews as $news)
+                            <li>
+                                <span class="nomor">#{{$loop->iteration}}</span>
+                                <span class="judul">
+                                    <a href="/news/{{$news->slug}}">
+                                        {{ $news->title }}
+                                    </a>
+                                </span>
+                            </li>
+                        @endforeach
                     </ol>
                     <button class="btn-selengkapnya"><a href="#">Lihat Selengkapnya →</a></button>
                 </div>
@@ -148,6 +121,7 @@
     </div>
     <script src="{{ asset('js/script/dateTime.js') }}"></script>
 </body>
+{{-- footer --}}
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-about">

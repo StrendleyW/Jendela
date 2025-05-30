@@ -51,7 +51,7 @@
 
         <div class="main-content-wrapper">
             <div class="politic-category-container"> 
-                <h1 class="category-title">{{ strtoupper($category->name) }}</h1> 
+                <h1 class="category-title">Top Picks</h1> 
                 <div class="article-list">
 
                     {{-- Loop untuk menampilkan berita --}}

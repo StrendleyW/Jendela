@@ -12,7 +12,7 @@
     font-family: 'Segoe UI', sans-serif;
     background-color: #fff;
     color: #000;
-    margin: 0px;
+    margin: 8px;
   }
 
 
@@ -61,7 +61,7 @@
     align-items: center;
   }
   
-  .header .logo a {
+  .header .logo {
     color: white;
     font-weight: bold;
     font-size: 40px;
@@ -69,12 +69,6 @@
     text-decoration: none;
   }
 
-  .header .logo a:link,
-  .header .logo a:visited,
-  .header .logo a:hover,
-  .header .logo a:active {
-    color: white;
-  }
   
   .header .nav-links {
     display: flex;
@@ -260,17 +254,46 @@
   margin-bottom: 14px;
 }
 
+.new-news ol,
+.top-picks ol,
+.daftar-berita-bernomor ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.new-news li,
+.top-picks li,
+.daftar-berita-bernomor li {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
 .nomor {
   font-weight: bold;
-  color: #999;
-  margin-right: 5px;
+  color: #888888;
+  margin-right: 0.6em;
+  flex-shrink: 0;
 }
 
 .judul {
   font-size: 15px;
-  color: #000;
-  line-height: 1.5;
+  color: #000000;
+  line-height: 1.4;
 }
+
+.judul a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.judul a:hover {
+  text-decoration: underline;
+}
+
+
+
 
 .btn-selengkapnya {
   margin-top: 20px;

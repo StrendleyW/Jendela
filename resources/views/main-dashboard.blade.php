@@ -43,25 +43,12 @@
         <!-- Category Menu -->
         <div class="category-menu">
             <div class="inner-category">
-                {{-- Link Kategori yang Diperbarui --}}
-                <a href="{{ route('category.show', ['category' => 'politik']) }}">Politic</a>
-                <a href="{{ route('category.show', ['category' => 'food']) }}">Food</a>
-                <a href="{{ route('category.show', ['category' => 'entertainment']) }}">Entertainment</a>
-                <a href="{{ route('category.show', ['category' => 'fashion']) }}">Fashion</a>
-                <a href="{{ route('category.show', ['category' => 'sport']) }}">Sport</a>
-                <a href="{{ route('category.show', ['category' => 'ekonomi']) }}">Ekonomi</a>
-                <a href="{{ route('category.show', ['category' => 'technology']) }}">Technology</a>
-
-                {{-- Jika ingin mengambil kategori secara dinamis dari database di masa mendatang --}}
-                {{-- Perlu mengirimkan variabel $navCategories dari controller ke view ini --}}
-                {{-- Contoh: --}}
-                {{-- @isset($navCategories) --}}
-                {{--     @foreach($navCategories as $navCategory) --}}
-                {{--         <a href="{{ route('category.show', ['category' => $navCategory->slug]) }}"> --}}
-                {{--             {{ $navCategory->name }} --}}
-                {{--         </a> --}}
-                {{--     @endforeach --}}
-                {{-- @endisset --}}
+                @foreach($navCategories as $navCategories)
+                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
+                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
+                        {{ $navCategories->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
 
@@ -69,17 +56,9 @@
         <div class="top-picks">
             <div class="inner">
                 <h2>TOP PICKS TODAY</h2>
-                <div class="top-picks-links">
-                    <a href="#">BBM</a>
-                    <span>|</span>
-                    <a href="#">Harga Minyak Hari Ini</a>
-                    <span>|</span>
-                    <a href="#">Banjir Jakarta</a>
-                    <span>|</span>
-                    <a href="#">Lebaran 2025</a>
-                    <span>|</span>
-                    <a href="#">Dedy Corbuzer</a>
-                </div>
+                    <a href="/top-picks" class="view-all-link"> 
+                        View All <span class="separator">|</span> &rarr;
+                    </a>
             </div>
         </div>
 

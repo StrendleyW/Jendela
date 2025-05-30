@@ -10,7 +10,7 @@
     font-family: 'Segoe UI', sans-serif;
     background-color: #fff;
     color: #000;
-    margin: 0px;
+    margin: 8px;
   }
 
 
@@ -57,7 +57,7 @@
     align-items: center;
   }
   
-  .header .logo a {
+  .header .logo {
     color: white;
     font-weight: bold;
     font-size: 40px;
@@ -65,13 +65,6 @@
     text-decoration: none;
   }
 
-  .header .logo a:link,
-  .header .logo a:visited,
-  .header .logo a:hover,
-  .header .logo a:active {
-    color: white;
-  }
-  
   .header .nav-links {
     display: flex;
     gap: 30px;
@@ -187,31 +180,27 @@
       font-weight: bold;
     }
     
-    .top-picks-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      align-items: center;
-      font-size: 1px;
-    }
-    
-    .top-picks-links a {
-      text-decoration: none;  
+    .top-picks .inner .view-all-link {
+     text-decoration: none;  
       color: black;
       font-weight: bold;
       font-size: 18px;
       margin-right: 20px;
       transition: border-bottom 0.1s ease;
-    }
+}
 
-    .top-picks-links a:hover {
-      border-bottom: 2px solid #2c2c88;
-    }
+    .top-picks .inner .view-all-link:hover {
+       text-decoration: none;
+      border-bottom: 2px solid black;
+      color: black;
+}
+
+    .top-picks .inner .view-all-link .separator {
+    margin: 0 0.4em; /* Memberi spasi di sekitar tanda | */
+    color: #6c757d; /* Warna abu-abu untuk pemisah, sesuaikan */
+    font-weight: normal;
+}
     
-    .top-picks-links span {
-      color: gray;
-    }
-
   /* News Section */
   .news-container {
     display: flex;
@@ -264,7 +253,7 @@
 
   .news-main .caption:hover{
     cursor:pointer;
-    color: #2c2c88;
+    color: #CCCCCC
   }
   
   .news-side {
@@ -322,7 +311,7 @@
 
   .news-side .caption:hover{
     cursor:pointer;
-    color: #2c2c88;
+    color: #CCCCCC
   }
 
   /* Latest News */
@@ -361,6 +350,11 @@
   height: auto;
   object-fit: cover;
   border-radius: 4px;
+  transition: transform 0.4s ease;
+}
+
+.latest-news-main:hover img {
+  transform: scale(1.1);
 }
 
 .latest-news-text{
@@ -376,10 +370,14 @@
   max-width: 920px; /* sesuaikan sesuai kebutuhan layout */
   word-wrap: break-word;
   overflow-wrap: break-word;
+  display : inline-block;
+  line-height: 1.1;
 }
 
 .latest-news-caption:hover {
-  color: #2c2c88;
+  text-decoration: none;
+  border-bottom: 2px solid black;
+  color: black;
   cursor: pointer;
 }
 

@@ -54,7 +54,7 @@ body {
     align-items: center;
   }
   
-  .header .logo a {
+  .header .logo {
     color: white;
     font-weight: bold;
     font-size: 40px;
@@ -62,12 +62,6 @@ body {
     text-decoration: none;
   }
 
-  .header .logo a:link,
-  .header .logo a:visited,
-  .header .logo a:hover,
-  .header .logo a:active {
-    color: white;
-  }
   
   .header .nav-links {
     display: flex;
@@ -234,7 +228,7 @@ body {
     padding: 0 15px; /* Padding on the sides */
 }
 
-.politik-category-container {
+.politic-category-container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 5px;
@@ -309,6 +303,7 @@ body {
     color: #7f8c8d; /* Grey color for meta */
     margin-bottom: 10px;
 }
+
 
 .article-date,
 .article-source {
