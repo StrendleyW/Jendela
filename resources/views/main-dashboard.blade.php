@@ -18,7 +18,7 @@
                     <div class="logo"><a href="/">JENDELA</a></div>
                     <div class="nav-links">
                         <a href="/">DASHBOARD</a>
-                        <a href="#">FACT CHECK</a>
+                        <a href="/fact-checks">FACT CHECK</a>
                         <a href="#" class="js-scroll-to-about">ABOUT US</a>
                     </div>
                     <div class="search-container">

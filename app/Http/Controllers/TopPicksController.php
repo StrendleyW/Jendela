@@ -7,7 +7,7 @@ use App\Models\News;
 use App\Models\Category;
 
 
-class TopPicksContoller extends Controller
+class TopPicksController extends Controller
 {
     public function show(Category $category)
     {
