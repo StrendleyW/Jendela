@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\TopPicksContoller;
+use App\Http\Controllers\TopPicksController;
 
 
 
@@ -19,6 +19,12 @@ Route::get('/category/{category:slug}', [CategoryController::class, 'show'])->na
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('berita.show'); //slug dari judul
 
 //top picks
+Route::get('/top-picks', [TopPicksController::class, 'show'])->name('top-picks.show');
+
+//fact check
+Route::view('/fact-checks', 'fact-checks', [
+    'navCategories'     => collect(), // Mengirim $navCategories sebagai koleksi kosong
+])->name('fact-checks.show');
 Route::get('/top-picks', [TopPicksContoller::class, 'show'])->name('top-picks.show');
 
 //indeks

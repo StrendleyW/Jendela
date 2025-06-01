@@ -8,7 +8,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 
 
-class TopPicksContoller extends Controller
+class TopPicksController extends Controller
 {
     public function show(Category $category)
     {
