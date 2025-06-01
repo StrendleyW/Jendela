@@ -25,7 +25,6 @@ Route::get('/top-picks', [TopPicksController::class, 'show'])->name('top-picks.s
 Route::view('/fact-checks', 'fact-checks', [
     'navCategories'     => collect(), // Mengirim $navCategories sebagai koleksi kosong
 ])->name('fact-checks.show');
-Route::get('/top-picks', [TopPicksContoller::class, 'show'])->name('top-picks.show');
 
 //indeks
-Route::get('/indeks', [TopPicksContoller::class, 'show'])->name('indeks.show');
+// Route::get('/indeks', [TopPicksContoller::class, 'show'])->name('indeks.show');
