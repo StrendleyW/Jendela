@@ -89,6 +89,9 @@
         <div class="latest-news">
             <div class="inner">
                 <h2>LATEST NEWS</h2>
+                <a href="/indeks" class="view-all-link">
+                    View All <span class="separator">|</span> &rarr;
+                </a>
             </div>
         </div>
 

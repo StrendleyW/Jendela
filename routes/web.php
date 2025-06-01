@@ -20,3 +20,6 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('berita.show')
 
 //top picks
 Route::get('/top-picks', [TopPicksContoller::class, 'show'])->name('top-picks.show');
+
+//indeks
+Route::get('/indeks', [TopPicksContoller::class, 'show'])->name('indeks.show');
