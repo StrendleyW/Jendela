@@ -50,7 +50,7 @@
                     <div class="fc-item-image">
                         {{-- Jika ada halaman detail, arahkan ke sana --}}
                         {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
-                        <a href="#"> {{-- Untuk sementara link ke # --}}
+                        <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke # --}}
                             <img src="{{ $article->image ? asset('storage/' . $article->image) : 'https://via.placeholder.com/300x200/CCCCCC/000000?text=No+Image' }}" alt="{{ $article->title }}">
                         </a>
                     </div>
@@ -58,7 +58,7 @@
                         <span class="fc-item-verdict verdict-{{ strtolower($article->verdict) }}">{{ strtoupper($article->verdict) }}</span>
                         <h3 class="fc-item-title">
                             {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
-                            <a href="#"> {{-- Untuk sementara link ke # --}}
+                            <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke # --}}
                                 {{ $article->title }}
                             </a>
                         </h3>
@@ -67,7 +67,7 @@
                             @if($article->source_name) | Sumber: {{ $article->source_name }} @endif
                         </p>
                         <p class="fc-item-excerpt">
-                            {{ Str::limit($article->claim_excerpt, 200) }} {{-- Menggunakan Str::limit untuk excerpt --}}
+                            {{ Str::limit(strip_tags($article->claim_excerpt ?? ''), 200) }}
                         </p>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
     </div>
     </div>
 
-    {{-- Fer --}}
+    {{-- Footer --}}
     <footer class="site-footer" id="about-us">
         <div class="footer-container">
             <div class="footer-about">
