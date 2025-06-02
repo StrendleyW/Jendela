@@ -105,7 +105,13 @@
                             </a>
                         </div>
                         <div class="latest-news-text">
-                            <a href="news/{{$news->slug}}">
+                            @if ($news->category)
+                                <a href="{{ route('category.show', ['category' => $news->category->slug]) }}"
+                                    class="news-item-category-tag category-tag-{{ $news->category->slug }}">
+                                    {{ $news->category->name }}
+                                </a>
+                            @endif
+                            <a href="{{ url('news/' . $news->slug) }}">
                                 <div class="latest-news-caption">
                                     {{ Str::limit($news->title, 100) }}
                                 </div>

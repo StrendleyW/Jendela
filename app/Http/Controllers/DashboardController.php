@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
         public function index()
     {
-    $latestNews = News::latest()->take(4)->get();
+    $latestNews = News::latest()->take(5)->get();
     $topPicks = News::where('is_top_pick', true)->latest('published_at')->take(4)->get();
     $navCategories = Category::orderBy('name', 'asc')->get();
 

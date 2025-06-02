@@ -17,7 +17,7 @@
                     <div class="logo"><a href="{{ url('/') }}">JENDELA</a></div>
                     <div class="nav-links">
                         <a href="{{ url('/') }}">DASHBOARD</a>
-                        <a href="#">FACT CHECK</a>
+                        <a href="/fact-checks">FACT CHECK</a>
                         <a href="#">ABOUT US</a>
                     </div>
                     <div class="search-container">
@@ -41,7 +41,7 @@
 
         <div class="main-content-wrapper">
             <div class="politic-category-container">
-                <h1 class="category-title">{{ strtoupper($category->name) }}</h1>
+                <h1 class="category-title">Indeks</h1>
                 <div class="article-list">
 
                     {{-- Loop untuk menampilkan berita --}}
@@ -53,6 +53,13 @@
                                 </a>
                             </div>
                             <div class="article-text-content">
+                                {{-- Tambahkan blok untuk menampilkan tag kategori --}}
+                                @if ($news->category)
+                                    <a href="{{ route('category.show', ['category' => $news->category->slug]) }}"
+                                        class="news-item-category-tag category-tag-{{ $news->category->slug }}">
+                                        {{ $news->category->name }}
+                                    </a>
+                                @endif
                                 <h2 class="article-title">
                                     <a href="{{ url('news/' . $news->slug) }}">{{ $news->title }}</a>
                                 </h2>
