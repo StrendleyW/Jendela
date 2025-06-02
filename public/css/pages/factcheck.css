@@ -269,13 +269,6 @@ body {
 /* Content (Dibiarkan jika masih relevan) */
 .main-content { /* Ini mungkin wrapper utama untuk konten di halaman dashboard/lainnya */
     padding: 20px;
-    /* Jika .fact-check-page-container ada di dalam .main-content,
-       maka .main-content perlu max-width dan margin auto agar .fact-check-page-container
-       yang width:60% bisa efektif.
-       Jika .fact-check-page-container langsung di dalam .navbar (setelah menu),
-       maka .fact-check-page-container dengan width:60% dan margin:auto akan menengahkan dirinya
-       relatif terhadap lebar .navbar.
-    */
 }
 .main-content h2 {
     font-size: 32px;

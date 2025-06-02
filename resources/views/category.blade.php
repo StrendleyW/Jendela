@@ -17,7 +17,7 @@
                     <div class="logo"><a href="{{ url('/') }}">JENDELA</a></div>
                     <div class="nav-links">
                         <a href="{{ url('/') }}">DASHBOARD</a>
-                        <a href="#">FACT CHECK</a>
+                        <a href="/fact-checks">FACT CHECK</a>
                         <a href="#">ABOUT US</a>
                     </div>
                     <div class="search-container">
