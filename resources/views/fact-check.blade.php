@@ -21,69 +21,77 @@
                     <a class="js-scroll-to-about">ABOUT US</a>
                 </div>
                 <div class="search-container">
-                    <input type="text" placeholder="Search news...">
-                    <button>&#128269;</button>
+                    <form action="{{ route('news.search') }}" method="GET" class="search-form">
+                        <input type="text" name="keyword" placeholder="Search news..."
+                            value="{{ request('keyword') ?? '' }}" class="search-input">
+                        <button type="submit" class="search-button">&#128269;</button>
+                    </form>
                 </div>
             </div>
         </div>
 
-            <!-- Category Menu -->
-            <div class="category-menu">
-                <div class="inner-category">
-                    @foreach($navCategories as $navCategories)
-                        <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
-                            class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
-                            {{ $navCategories->name }}
-                        </a>
-                    @endforeach
-                </div>
+        <!-- Category Menu -->
+        <div class="category-menu">
+            <div class="inner-category">
+                @foreach($navCategories as $navCategories)
+                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
+                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
+                        {{ $navCategories->name }}
+                    </a>
+                @endforeach
             </div>
         </div>
+    </div>
 
     <div class="main-content-wrapper">
-    <div class="fact-check-page-container">
-        <h1 class="page-title">CEK FAKTA</h1>
-        <div class="fact-check-list">
+        <div class="fact-check-page-container">
+            <h1 class="page-title">CEK FAKTA</h1>
+            <div class="fact-check-list">
+                @if(isset($factCheckArticles) && $factCheckArticles->count() > 0)
+                    @foreach ($factCheckArticles as $article)
+                        <div class="fact-check-item">
+                            <div class="fc-item-image">
+                                {{-- Jika ada halaman detail, arahkan ke sana --}}
+                                {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
+                                    <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke #
+                                        --}}
+                                        <img src="{{ $article->image ? asset('storage/' . $article->image) : 'https://via.placeholder.com/300x200/CCCCCC/000000?text=No+Image' }}"
+                                            alt="{{ $article->title }}">
+                                    </a>
+                            </div>
+                            <div class="fc-item-content">
+                                <span
+                                    class="fc-item-verdict verdict-{{ strtolower($article->verdict) }}">{{ strtoupper($article->verdict) }}</span>
+                                <h3 class="fc-item-title">
+                                    {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
+                                        <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke
+                                            # --}}
+                                            {{ $article->title }}
+                                        </a>
+                                </h3>
+                                <p class="fc-item-meta">
+                                    {{ $article->published_at ? $article->published_at->format('d M Y, H:i') : 'Tanggal tidak tersedia' }}
+                                    WIB
+                                    @if($article->source_name) | Sumber: {{ $article->source_name }} @endif
+                                </p>
+                                <p class="fc-item-excerpt">
+                                    {{ Str::limit(strip_tags($article->claim_excerpt ?? ''), 200) }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <p>Belum ada berita cek fakta yang tersedia.</p>
+                @endif
+            </div>
+
+            {{-- Tampilkan link pagination --}}
             @if(isset($factCheckArticles) && $factCheckArticles->count() > 0)
-                @foreach ($factCheckArticles as $article)
-                <div class="fact-check-item">
-                    <div class="fc-item-image">
-                        {{-- Jika ada halaman detail, arahkan ke sana --}}
-                        {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
-                        <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke # --}}
-                            <img src="{{ $article->image ? asset('storage/' . $article->image) : 'https://via.placeholder.com/300x200/CCCCCC/000000?text=No+Image' }}" alt="{{ $article->title }}">
-                        </a>
-                    </div>
-                    <div class="fc-item-content">
-                        <span class="fc-item-verdict verdict-{{ strtolower($article->verdict) }}">{{ strtoupper($article->verdict) }}</span>
-                        <h3 class="fc-item-title">
-                            {{-- <a href="{{ route('factcheck.show', $article->slug) }}"> --}}
-                            <a href="{{ route('fact-checks.show', $article->slug) }}"> {{-- Untuk sementara link ke # --}}
-                                {{ $article->title }}
-                            </a>
-                        </h3>
-                        <p class="fc-item-meta">
-                            {{ $article->published_at ? $article->published_at->format('d M Y, H:i') : 'Tanggal tidak tersedia' }} WIB
-                            @if($article->source_name) | Sumber: {{ $article->source_name }} @endif
-                        </p>
-                        <p class="fc-item-excerpt">
-                            {{ Str::limit(strip_tags($article->claim_excerpt ?? ''), 200) }}
-                        </p>
-                    </div>
+                <div class="pagination-links" style="margin-top: 30px; text-align: center;">
+                    {{ $factCheckArticles->links() }}
                 </div>
-                @endforeach
-            @else
-                <p>Belum ada berita cek fakta yang tersedia.</p>
             @endif
         </div>
-
-        {{-- Tampilkan link pagination --}}
-        @if(isset($factCheckArticles) && $factCheckArticles->count() > 0)
-        <div class="pagination-links" style="margin-top: 30px; text-align: center;">
-            {{ $factCheckArticles->links() }}
-        </div>
-        @endif
-    </div>
     </div>
 
     {{-- Footer --}}
@@ -124,9 +132,10 @@
         </div>
     </footer>
     {{-- Akhir dari Footer --}}
-    
-    <script src="{{ asset('js/script/aboutUs.js') }}" defer></script> 
+
+    <script src="{{ asset('js/script/aboutUs.js') }}" defer></script>
     <script src="{{ asset('js/script/dateTime.js') }}" defer></script>
 
 </body>
+
 </html>

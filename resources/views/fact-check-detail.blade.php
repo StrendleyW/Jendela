@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>{{ $article->title ?? 'Detail Cek Fakta' }} - Jendela</title>
@@ -8,6 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
     {{-- NAVBAR (HEADER + CATEGORY MENU) --}}
@@ -17,16 +19,21 @@
                 <div class="logo"><a href="/">JENDELA</a></div>
                 <div class="nav-links">
                     <a href="/">DASHBOARD</a>
-                    <a href="/fact-checks" class="{{ Str::contains(Route::currentRouteName(), 'fact-checks') ? 'active' : '' }}">FACT CHECK</a>
+                    <a href="/fact-checks"
+                        class="{{ Str::contains(Route::currentRouteName(), 'fact-checks') ? 'active' : '' }}">FACT
+                        CHECK</a>
                     <a class="js-scroll-to-about">ABOUT US</a>
                 </div>
                 <div class="search-container">
-                    <input type="text" placeholder="Search news...">
-                    <button>&#128269;</button>
+                    <form action="{{ route('news.search') }}" method="GET" class="search-form">
+                        <input type="text" name="keyword" placeholder="Search news..."
+                            value="{{ request('keyword') ?? '' }}" class="search-input">
+                        <button type="submit" class="search-button">&#128269;</button>
+                    </form>
                 </div>
             </div>
         </div>
-        
+
         <!-- Category Menu -->
         <div class="category-menu">
             <div class="inner-category">
@@ -42,8 +49,8 @@
     {{-- AKHIR NAVBAR --}}
 
     {{-- KONTEN UTAMA HALAMAN --}}
-    <div class="main-content-wrapper"> 
-        <article class="fact-check-article-container"> 
+    <div class="main-content-wrapper">
+        <article class="fact-check-article-container">
             @if(isset($article))
                 <div class="fc-article-header">
                     <span class="fc-article-verdict verdict-{{ strtolower($article->verdict ?? 'unknown') }}">
@@ -51,11 +58,13 @@
                     </span>
                     <h1 class="fc-article-title">{{ $article->title }}</h1>
                     <p class="fc-article-meta">
-                        Dipublikasikan: {{ $article->published_at ? $article->published_at->format('d M Y, H:i') : 'N/A' }} WIB
+                        Dipublikasikan: {{ $article->published_at ? $article->published_at->format('d M Y, H:i') : 'N/A' }}
+                        WIB
                         @if($article->source_name)
-                            | Sumber Klaim: 
+                            | Sumber Klaim:
                             @if($article->source_link)
-                                <a href="{{ $article->source_link }}" target="_blank" rel="noopener noreferrer">{{ $article->source_name }}</a>
+                                <a href="{{ $article->source_link }}" target="_blank"
+                                    rel="noopener noreferrer">{{ $article->source_name }}</a>
                             @else
                                 {{ $article->source_name }}
                             @endif
@@ -67,7 +76,8 @@
 
                 @if($article->image)
                     <div class="fc-article-image-wrapper">
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}" class="fc-article-image">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}"
+                            class="fc-article-image">
                     </div>
                 @endif
 
@@ -76,7 +86,7 @@
                         <strong>Ringkasan Klaim:</strong>
                         <div>
                             {{ Str::limit(strip_tags($article->claim_excerpt ?? ''), 200) }}
-                        </div> 
+                        </div>
                     </div>
                 @endif
 
@@ -92,7 +102,7 @@
 
     {{-- FOOTER --}}
     <footer class="site-footer" id="about-us">
-       <div class="footer-container">
+        <div class="footer-container">
             <div class="footer-about">
                 <h2>JENDELA</h2>
                 <p>Media terpercaya untuk berita terkini, tajam, dan terpercaya dari seluruh Indonesia.</p>
@@ -128,7 +138,8 @@
         </div>
     </footer>
     {{-- AKHIR FOOTER --}}
-    
-    <script src="{{ asset('js/script/aboutUs.js') }}" defer></script> 
+
+    <script src="{{ asset('js/script/aboutUs.js') }}" defer></script>
 </body>
+
 </html>

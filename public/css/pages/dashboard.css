@@ -225,6 +225,7 @@
 
   .news-main:hover img {
     transform: scale(1.1); /*zoom slightly*/
+    border-radius: 4px;
   }
 
   .news-main .caption {

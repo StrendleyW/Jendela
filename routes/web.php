@@ -7,8 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TopPicksController;
 use App\Http\Controllers\FactCheckController;
 use App\Http\Controllers\IndeksController;
-
-
+use App\Http\Controllers\SearchController;
 
 //--dashboard--
 Route::get('/', [DashboardController::class, 'index']);
@@ -32,3 +31,6 @@ Route::get('/fact-checks', [FactCheckController::class, 'index'])->name('fact-ch
 
 // Untuk menampilkan SATU artikel spesifik berdasarkan slug-nya
 Route::get('/fact-checks/{slug}', [FactCheckController::class, 'show'])->name('fact-checks.show');
+
+//--search news--
+Route::get('/search', [SearchController::class, 'search'])->name('news.search');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\news;
 use App\Models\Category;
+use Carbon\Carbon;       // Untuk waktu
 
 class NewsController extends Controller
 {
@@ -16,5 +17,4 @@ public function show($slug)
     $navCategories = Category::orderBy('name', 'asc')->get();
     return view('detail-berita', compact('news', 'navCategories', 'latestNews', 'topPicks'));
 }
-
 }

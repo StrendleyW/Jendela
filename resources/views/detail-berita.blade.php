@@ -17,12 +17,15 @@
                     <div class="logo"><a href="/">JENDELA</a></div>
                     <div class="nav-links">
                         <a href="/">DASHBOARD</a>
-                        <a href="#">FACT CHECK</a>
+                        <a href="/fact-checks">FACT CHECK</a>
                         <a href="#">ABOUT US</a>
                     </div>
                     <div class="search-container">
-                        <input type="text" placeholder="Search news...">
-                        <button>&#128269;</button>
+                        <form action="{{ route('news.search') }}" method="GET" class="search-form">
+                            <input type="text" name="keyword" placeholder="Search news..."
+                                value="{{ request('keyword') ?? '' }}" class="search-input">
+                            <button type="submit" class="search-button">&#128269;</button>
+                        </form>
                     </div>
                 </div>
             </div>
