@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ $article->title ?? 'Detail Cek Fakta' }} - Jendela</title>
+    <title>Jendela - {{ $article->title ?? 'Detail Cek Fakta' }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/factcheckdetail.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -34,13 +34,12 @@
             </div>
         </div>
 
-        <!-- Category Menu -->
         <div class="category-menu">
             <div class="inner-category">
-                @foreach($navCategories as $navCategories)
-                    <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
-                        class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
-                        {{ $navCategories->name }}
+                @foreach($navCategories as $navCategory)
+                    <a href="{{ route('category.show', ['category' => $navCategory->slug]) }}"
+                        class="{{ isset($category) && $category->slug == $navCategory->slug ? 'active' : '' }}">
+                        {{ $navCategory->name }}
                     </a>
                 @endforeach
             </div>
@@ -93,6 +92,33 @@
                 <div class="fc-article-content">
                     {!! $article->full_content !!}
                 </div>
+
+                {{-- AWAL BAGIAN KOMENTAR DISQUS --}}
+                <div class="comments-section" style="margin-top: 40px; padding: 0 20px;">
+                    <hr>
+                    <h2 style="margin-top: 20px; margin-bottom: 20px; font-size: 1.5em;">Komentar</h2>
+                    <div id="disqus_thread"></div>
+                    <script>
+                        /**
+                        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                        
+                        var disqus_config = function () {
+                            this.page.url = '{{ url()->current() }}';  // URL Halaman Cek Fakta
+                            this.page.identifier = 'fact-check-{{ $article->id }}'; // ID Unik untuk Cek Fakta
+                        };
+                        
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://jendelaberita.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                {{-- AKHIR BAGIAN KOMENTAR DISQUS --}}
+
             @else
                 <p style="text-align:center; padding: 30px;">Artikel tidak ditemukan.</p>
             @endif

@@ -11,7 +11,6 @@
 <body>
     <div class="content">
         <div class="navbar">
-            <!-- Header -->
             <div class="header">
                 <div class="inner-header">
                     <div class="logo"><a href="/">JENDELA</a></div>
@@ -30,13 +29,12 @@
                 </div>
             </div>
 
-            <!-- Category Menu -->
             <div class="category-menu">
                 <div class="inner-category">
-                    @foreach($navCategories as $navCategories)
-                        <a href="{{ route('category.show', ['category' => $navCategories->slug]) }}"
-                            class="{{ isset($category) && $category->slug == $navCategories->slug ? 'active' : '' }}">
-                            {{ $navCategories->name }}
+                    @foreach($navCategories as $navCategory)
+                        <a href="{{ route('category.show', ['category' => $navCategory->slug]) }}"
+                            class="{{ isset($category) && $category->slug == $navCategory->slug ? 'active' : '' }}">
+                            {{ $navCategory->name }}
                         </a>
                     @endforeach
                 </div>
@@ -44,7 +42,6 @@
         </div>
 
 
-        <!-- Detail Berita -->
         <div class="main-content">
             <div class="detail-news">
                 <div class="breadcrumb">TOP PICKS &nbsp; > &nbsp; BBM NAIK</div>
@@ -68,22 +65,46 @@
                 </div>
 
                 <div class="content-news">
-                    {{-- <p>{{ $berita->isi }} </p> --}}
-                    <p>{!! nl2br(e((string) $news->content_news)) !!}
-                    </p>
+                    <p>{!! nl2br(e((string) $news->content_news)) !!}</p>
                 </div>
+
+                {{-- AWAL BAGIAN KOMENTAR DISQUS --}}
+                <div class="comments-section" style="margin-top: 40px;">
+                    <hr>
+                    <h2 style="margin-top: 20px; margin-bottom: 20px; font-size: 1.5em;">Komentar</h2>
+                    <div id="disqus_thread"></div>
+                    <script>
+                        /**
+                        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                        
+                        var disqus_config = function () {
+                            this.page.url = '{{ url()->current() }}';  // Menggunakan URL kanonikal halaman saat ini
+                            this.page.identifier = '{{ $news->id }}'; // Menggunakan ID unik dari berita
+                        };
+                        
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://jendelaberita.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div>
+                {{-- AKHIR BAGIAN KOMENTAR DISQUS --}}
+
             </div>
             <aside class="sidebar">
-                <!-- Kolom Berita Terpopuler -->
                 <div class="top-picks">
                     <h3>Top Picks</h3>
                     <ol>
-                        @foreach ($topPicks as $news)
+                        @foreach ($topPicks as $topNews)
                             <li>
                                 <span class="nomor">#{{$loop->iteration}}</span>
                                 <span class="judul">
-                                    <a href="/news/{{$news->slug}}">
-                                        {{ $news->title }}
+                                    <a href="/news/{{$topNews->slug}}">
+                                        {{ $topNews->title }}
                                     </a>
                                 </span>
                             </li>
@@ -95,12 +116,12 @@
                 <div class="new-news">
                     <h3>Berita Terbaru</h3>
                     <ol>
-                        @foreach ($latestNews as $news)
+                        @foreach ($latestNews as $latest)
                             <li>
                                 <span class="nomor">#{{$loop->iteration}}</span>
                                 <span class="judul">
-                                    <a href="/news/{{$news->slug}}">
-                                        {{ $news->title }}
+                                    <a href="/news/{{$latest->slug}}">
+                                        {{ $latest->title }}
                                     </a>
                                 </span>
                             </li>
