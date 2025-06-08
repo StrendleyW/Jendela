@@ -44,7 +44,21 @@
 
         <div class="main-content">
             <div class="detail-news">
-                <div class="breadcrumb">TOP PICKS &nbsp; > &nbsp; BBM NAIK</div>
+                <div class="breadcrumb">
+                    <a href="{{ url('/') }}">DASHBOARD</a>
+
+                    {{-- Cek jika berita memiliki kategori --}}
+                    @if ($news->category)
+                        <span class="separator">&nbsp; > &nbsp;</span>
+                        <a href="{{ route('category.show', ['category' => $news->category->slug]) }}">
+                            {{ strtoupper($news->category->name) }}
+                        </a>
+                    @endif
+
+                    <span class="separator">&nbsp; > &nbsp;</span>
+                    {{-- Judul berita saat ini (bukan link) --}}
+                    <span class="current-page">{{ Str::limit($news->title, 65) }}</span>
+                </div>
 
                 <h1 class="title-news">
                     {{ $news->title }}
@@ -65,7 +79,7 @@
                 </div>
 
                 <div class="content-news">
-                    <p>{!! nl2br(e((string) $news->content_news)) !!}</p>
+                    <p>{!! $news->content_news !!}</p>
                 </div>
 
                 {{-- AWAL BAGIAN KOMENTAR DISQUS --}}
@@ -77,20 +91,21 @@
                         /**
                         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                        
+
                         var disqus_config = function () {
                             this.page.url = '{{ url()->current() }}';  // Menggunakan URL kanonikal halaman saat ini
                             this.page.identifier = '{{ $news->id }}'; // Menggunakan ID unik dari berita
                         };
-                        
-                        (function() { // DON'T EDIT BELOW THIS LINE
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://jendelaberita.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
+
+                        (function () { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jendelaberita.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
                         })();
                     </script>
-                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
                 </div>
                 {{-- AKHIR BAGIAN KOMENTAR DISQUS --}}
 

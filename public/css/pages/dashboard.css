@@ -184,8 +184,8 @@
 
     .top-picks .inner .view-all-link:hover {
        text-decoration: none;
-      border-bottom: 2px solid black;
-      color: black;
+      border-bottom: 2px solid #2c2c88;
+      color: #2c2c88;
 }
     
   /* News Section */
@@ -318,8 +318,8 @@
 
     .latest-news .inner .view-all-link:hover {
        text-decoration: none;
-      border-bottom: 2px solid #0056b3;
-      color: #0056b3;
+      border-bottom: 2px solid #2c2c88;
+      color: #2c2c88;
 }
 
     .latest-news .inner .view-all-link .separator {
@@ -403,8 +403,8 @@
 
 .latest-news-caption:hover {
   text-decoration: none;
-  border-bottom: 2px solid black;
-  color: #0056b3;
+  border-bottom: 2px solid #2c2c88;
+  color: #ff0000;
   cursor: pointer;
 }
 

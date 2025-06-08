@@ -284,7 +284,8 @@ body {
 }
 
 .article-title a:hover {
-    color: #0056b3; /* Your site's primary accent color */
+    color: #2c2c88; 
+    text-decoration: underline;
 }
 
 /* Styling untuk Tag Kategori di halaman daftar kategori */

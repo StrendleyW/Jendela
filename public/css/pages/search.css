@@ -318,13 +318,13 @@ body {
 }
 
 .article-title a:hover {
-    color: #007bff; /* Warna hover judul, sesuaikan */
+    color: #2c2c88;
+    text-decoration: underline;
 }
 
 .article-meta {
     font-size: 0.85em;
-    color: #777;
-    margin-top: auto; /* Mendorong meta ke bawah jika ada ruang di .article-text-content */
+    color: #777; /* Mendorong meta ke bawah jika ada ruang di .article-text-content */
 }
 
 .no-results {

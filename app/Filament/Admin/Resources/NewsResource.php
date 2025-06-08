@@ -50,12 +50,13 @@ public static function form(Form $form): Form
                 ->directory('images')
                 ->required(),
 
-            Forms\Components\Textarea::make('content_news')
-                ->required()
-                ->rows(6),
-
             Forms\Components\DateTimePicker::make('published_at')
                 ->required(),
+
+            Forms\Components\RichEditor::make('content_news')
+            ->label('Content News')
+            ->required()
+            ->columnSpanFull(),
 
             Forms\Components\Toggle::make('is_top_pick')
                 ->label('Top Pick')
