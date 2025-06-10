@@ -8,21 +8,44 @@ use App\Models\Category;
 
 class IndeksController extends Controller
 {
-    public function show(Category $category)
+    public function index(Request $request)
     {
-        $newsList = News::
-                        where('published_at', '<=', now()) // Hanya tampilkan yang sudah dipublish
-                        ->orderBy('published_at', 'desc')
-                        ->paginate(10); // Ganti 10 dengan jumlah berita per halaman yang diinginkan
+        // Ambil input filter dari URL, jika ada
+        $selectedCategorySlug = $request->input('category');
+        $selectedDate = $request->input('date');
 
-        // Ambil juga kategori untuk navigasi 
-        $navCategories = Category::all();
+        // Mulai query berita yang sudah publish
+        $query = News::with('category')
+                     ->where('published_at', '<=', now())
+                     ->latest('published_at');
 
-        // Kirim data ke view
+        // Terapkan filter KATEGORI jika dipilih
+        if ($selectedCategorySlug) {
+            $query->whereHas('category', function ($q) use ($selectedCategorySlug) {
+                $q->where('slug', $selectedCategorySlug);
+            });
+        }
+
+        // Terapkan filter TANGGAL jika dipilih
+        if ($selectedDate) {
+            $query->whereDate('published_at', $selectedDate);
+        }
+
+        // Eksekusi query dengan paginasi
+        $newsList = $query->paginate(15)->withQueryString();
+
+        // Ambil semua kategori untuk dropdown filter & navigasi
+        $allCategories = Category::orderBy('name', 'asc')->get();
+        $navCategories = $allCategories;
+
+        // Kirim semua data yang dibutuhkan ke view
         return view('indeks', [
-            'category' => $category,
-            'newsList' => $newsList,
-            'navCategories' => $navCategories,
+            'newsList'              => $newsList,
+            'navCategories'         => $navCategories,
+            'allCategories'         => $allCategories,
+            'selectedCategorySlug'  => $selectedCategorySlug,
+            'selectedDate'          => $selectedDate,
+            'category'              => null,
         ]);
-}
+    }
 }

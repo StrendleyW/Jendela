@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Jendela - {{ $category->name }}</title> {{-- Judul dinamis --}}
-    <link rel="stylesheet" href="{{ asset('css/pages/kategori.css') }}">
+    <title>Jendela - Indeks</title> {{-- Judul dinamis --}}
+    <link rel="stylesheet" href="{{ asset('css/pages/indeks.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -46,6 +46,30 @@
             <div class="politic-category-container">
                 <h1 class="category-title">Indeks</h1>
                 <div class="article-list">
+                    <div class="filter-container">
+                        <form action="{{ route('news.index') }}" method="GET" id="filter-form">
+                            {{-- Filter Kategori --}}
+                            <div class="filter-group">
+                                <select name="category" onchange="this.form.submit()">
+                                    <option value="">Semua Kategori</option>
+                                    @foreach ($allCategories as $category)
+                                        <option value="{{ $category->slug }}" {{ $selectedCategorySlug == $category->slug ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            {{-- Filter Tanggal --}}
+                            <div class="filter-group">
+                                <input type="date" name="date" value="{{ $selectedDate ?? '' }}"
+                                    onchange="this.form.submit()">
+                            </div>
+
+                            {{-- Tombol untuk Hapus Filter --}}
+                            <a href="{{ route('news.index') }}" class="clear-filter-btn">Hapus Filter</a>
+                        </form>
+                    </div>
 
                     {{-- Loop untuk menampilkan berita --}}
                     @forelse ($newsList as $news)
@@ -75,7 +99,9 @@
                     @empty
                         <p>Belum ada berita dalam kategori ini.</p> {{-- Pesan jika tidak ada berita --}}
                     @endforelse
-
+                    <div class="pagination-links">
+                        {{ $newsList->links() }}
+                    </div>
                 </div>
             </div>
         </div>

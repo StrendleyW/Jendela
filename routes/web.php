@@ -23,7 +23,8 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('berita.show')
 Route::get('/top-picks', [TopPicksController::class, 'show'])->name('top-picks.show');
 
 //--Indeks--
-Route::get('/indeks', [IndeksController::class, 'show'])->name('indeks.show');
+Route::get('/indeks', [IndeksController::class, 'index'])->name('news.index');
+
 
 //--fact check--
 // Untuk menampilkan daftar semua artikel

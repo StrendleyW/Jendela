@@ -1,0 +1,458 @@
+/* General body styling (optional, adjust to your site's theme) */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.content,
+.header,
+.category-menu {
+  width: 100%;
+}
+
+  /* Header / Navbar */
+  .navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
+
+  .header {
+    background-color: #1a1a1a;
+  }
+
+  .inner-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 26px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    flex: 1;
+    text-decoration: none;
+  }
+
+  
+  .header .nav-links {
+    display: flex;
+    gap: 30px;
+    flex: 2;
+    justify-content: center;
+  }
+  
+  .header .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    /* transition: background-color 0.3s ease, box-shadow 0.3s ease;  */
+  }
+
+  .header .nav-links a:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #000000}
+  
+  .header .search-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .header input[type="text"] {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .header button {
+    padding: 7px 12px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  /* Category Menu */
+  .category-menu {
+    background-color: #2c2c3c;
+  }
+
+  .inner-category {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .category-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    /* transition: background-color 0.3s ease, box-shadow 0.3s ease;  */
+  }
+
+  .category-menu a:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Footer */
+.site-footer {
+  background-color: #1e1e1e;
+  color: #ddd;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-container > div {
+  flex: 1 1 200px;
+}
+
+.footer-about h2 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #fff;
+}
+
+.footer-contact p {
+  margin: 6px 0;
+}
+
+.social-icons a {
+  color: #ccc;
+  margin-right: 15px;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #2c2c88;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+
+/* Main content wrapper */
+.main-content-wrapper {
+    max-width: 1200px; /* Or your site's max width */
+    margin: 20px auto; /* Centers the content */
+    padding: 0 15px; /* Padding on the sides */
+}
+
+.politic-category-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%; /* Ensure it takes the full width of its parent */
+}
+
+.category-title {
+    text-align: center;
+    font-size: 2.5em; /* Similar to "Pendidikan" in your image */
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eeeeee; /* A subtle separator */
+    font-weight: bold;
+}
+
+.article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between articles */
+}
+
+/* Styling khusus untuk container filter */
+.filter-container {
+    background-color: #2c2c3c; /* Background gelap seperti menu kategori Anda */
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.filter-container form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.filter-group select,
+.filter-group input[type="date"] {
+    background-color: #1a1a1a; /* Background input lebih gelap */
+    color: #e0e0e0; /* Warna teks terang */
+    border: 1px solid #444;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    min-width: 200px; /* Lebar minimum */
+}
+
+/* Styling untuk panah dropdown di select */
+.filter-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cccccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    padding-right: 40px; /* Beri ruang untuk panah */
+}
+
+/* Styling untuk ikon kalender di input date */
+.filter-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Membuat ikon kalender default menjadi putih/terang */
+}
+
+.clear-filter-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: auto; /* Mendorong tombol ini ke paling kanan */
+    padding: 10px 15px;
+    border-radius: 6px;
+    background-color: #6c757d;
+    transition: background-color 0.2s ease;
+}
+
+.clear-filter-btn:hover {
+    background-color: #5a6268;
+}
+
+.article-item {
+    display: flex; /* Image on left, text on right */
+    gap: 20px; /* Space between image and text */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0; /* Separator for articles */
+}
+.article-item:last-child {
+    border-bottom: none; /* No border for the last item */
+    padding-bottom: 0;
+}
+
+.article-image {
+ flex: 0 0 180px;
+ height: 120px; /* Tetapkan tinggi tetap pada wadah gambar */
+ overflow: hidden; /* Penting agar gambar yang di-zoom tidak keluar wadah */
+ border-radius: 4px;
+}
+
+.article-image img {
+ width: 100%;
+ height: 100%; /* Gambar mengisi seluruh wadah */
+ object-fit: cover;
+ border-radius: 4px;
+ display: block;
+ transition: transform 0.3s ease-in-out; /* Tambahkan transisi untuk zoom */
+}
+
+.article-image a:hover img { /* Efek hover pada gambar di dalam link */
+ transform: scale(1.05); /* Zoom sedikit saat dihover */
+}
+
+.article-text-content {
+    flex: 1; /* Takes remaining space */
+}
+
+.article-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.4em;
+    line-height: 1.3;
+    font-weight: bold;
+}
+
+.article-title a {
+    text-decoration: none;
+    color: #000000; /* Dark blueish color for titles */
+}
+
+.article-title a:hover {
+    color: #2c2c88; 
+    text-decoration: underline;
+}
+
+/* Styling untuk Tag Kategori di halaman daftar kategori */
+.article-text-content .news-item-category-tag {
+    display: inline-block;
+    color: white;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    line-height: 1.4;
+    background-color: #6c757d; /* Warna default/fallback */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.article-text-content .news-item-category-tag:hover {
+    opacity: 0.85;
+}
+
+.article-text-content .category-tag-entertainment { background-color: #8e44ad; }
+.article-text-content .category-tag-fashion { background-color: #e91e63; }
+.article-text-content .category-tag-economy { background-color: #27ae60; }
+.article-text-content .category-tag-food { background-color: #f39c12; }
+.article-text-content .category-tag-politic { background-color: #2980b9; }
+.article-text-content .category-tag-sport { background-color: #d35400; }
+.article-text-content .category-tag-technology { background-color: #34495e; }
+
+/* Sesuaikan margin pada elemen judul agar ada ruang untuk tag */
+.article-text-content .article-title {
+    margin-top: 0; 
+}
+
+.article-meta {
+    font-size: 0.85em;
+    color: #7f8c8d; /* Grey color for meta */
+    margin-bottom: 10px;
+}
+
+
+.article-date,
+.article-source {
+    display: inline-block; /* Or use spans as they are */
+}
+
+.article-excerpt {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Styling untuk Blok Paginasi */
+.pagination-links {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Laravel biasanya membuat struktur <nav> -> <ul> -> <li> -> <a> */
+.pagination-links nav {
+    display: flex;
+    justify-content: center; /* Membuat tombol paginasi di tengah */
+    align-items: center;
+}
+
+.pagination-links .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden; /* Agar border-radius di ujung terlihat rapi */
+}
+
+.pagination-links .page-item .page-link,
+.pagination-links .page-item span { /* 'span' untuk tombol Previous/Next yang non-aktif */
+    display: block;
+    padding: 10px 15px;
+    color: #007bff; /* Warna teks biru */
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-left: none; /* Hapus border kiri agar tidak dobel */
+    background-color: #fff;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.pagination-links .page-item:first-child .page-link {
+    border-left: 1px solid #ddd; /* Tambahkan border kiri untuk item pertama */
+}
+
+.pagination-links .page-item .page-link:hover {
+    background-color: #e9ecef; /* Warna latar saat hover */
+}
+
+.pagination-links .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #007bff; /* Warna untuk halaman yang aktif */
+    border-color: #007bff;
+}
+
+.pagination-links .page-item.disabled span,
+.pagination-links .page-item.disabled .page-link {
+    color: #6c757d; /* Warna untuk tombol Previous/Next yang non-aktif */
+    pointer-events: none;
+    background-color: #f8f9fa;
+    border-color: #ddd;
+}
