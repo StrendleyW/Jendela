@@ -75,7 +75,9 @@
                     @empty
                         <p>Belum ada berita dalam kategori ini.</p> {{-- Pesan jika tidak ada berita --}}
                     @endforelse
-
+                </div>
+                <div class="pagination-links">
+                    {{ $newsList->links() }}
                 </div>
             </div>
         </div>

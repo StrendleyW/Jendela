@@ -79,15 +79,12 @@
                             </div>
                         @endforeach
                     </div>
-
-                    {{-- Tampilkan Link Paginasi --}}
-                    <div class="pagination-links">
-                        {{ $newsList->links() }}
-                    </div>
-
                 @else
                     <p class="no-results">Tidak ditemukan berita yang cocok dengan kata kunci "{{ $keyword }}".</p>
                 @endif
+            </div>
+            <div class="pagination-links">
+                {{ $newsList->links() }}
             </div>
         </div>
 

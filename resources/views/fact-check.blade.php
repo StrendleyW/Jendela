@@ -84,13 +84,9 @@
                     <p>Belum ada berita cek fakta yang tersedia.</p>
                 @endif
             </div>
-
-            {{-- Tampilkan link pagination --}}
-            @if(isset($factCheckArticles) && $factCheckArticles->count() > 0)
-                <div class="pagination-links" style="margin-top: 30px; text-align: center;">
-                    {{ $factCheckArticles->links() }}
-                </div>
-            @endif
+            <div class="pagination-links">
+                {{ $newsList->links() }}
+            </div>
         </div>
     </div>
 
