@@ -85,7 +85,7 @@
                 @endif
             </div>
             <div class="pagination-links">
-                {{ $newsList->links() }}
+                {{ $factCheckArticles->links() }}
             </div>
         </div>
     </div>
