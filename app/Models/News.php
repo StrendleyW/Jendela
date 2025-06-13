@@ -42,6 +42,7 @@ class News extends Model
     'name',
     'content_news',
     'image',
+    'video_url',
     'published_at',
     'is_top_pick',
 

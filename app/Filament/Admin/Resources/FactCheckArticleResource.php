@@ -43,6 +43,11 @@ class FactCheckArticleResource extends Resource
                     ->visibility('public')
                     ->label('Gambar Utama'),
 
+                Forms\Components\TextInput::make('video_url')
+                    ->label('URL Video (YouTube atau Vimeo)')
+                    ->url() // Menambahkan validasi bahwa input harus berupa URL
+                    ->helperText('Tempelkan URL lengkap video dari YouTube atau Vimeo di sini.'),
+
                 // Sebaiknya gunakan RichEditor untuk input teks yang panjang dan butuh format
                 Forms\Components\RichEditor::make('claim_excerpt')
                     ->label('Ringkasan Klaim')

@@ -19,7 +19,7 @@
                     <div class="nav-links">
                         <a href="/">DASHBOARD</a>
                         <a href="/fact-checks">FACT CHECK</a>
-                        <a href="#" class="js-scroll-to-about">ABOUT US</a>
+                        <a href="/" class="js-scroll-to-about">ABOUT US</a>
                     </div>
                     <div class="search-container">
                         <form action="{{ route('news.search') }}" method="GET" class="search-form">

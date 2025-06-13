@@ -17,7 +17,7 @@
                     <div class="nav-links">
                         <a href="/">DASHBOARD</a>
                         <a href="/fact-checks">FACT CHECK</a>
-                        <a href="#">ABOUT US</a>
+                        <a href="/">ABOUT US</a>
                     </div>
                     <div class="search-container">
                         <form action="{{ route('news.search') }}" method="GET" class="search-form">
@@ -74,9 +74,38 @@
                     {{ $news->published_at->format('d M Y, H:i') }} WIB
                 </div>
 
-                <div class="image-news">
-                    <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}">
-                </div>
+                @if($news->video_url)
+                {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
+                @php
+                    $embedUrl = '';
+                    if (str_contains($news->video_url, 'youtube.com') || str_contains($news->video_url, 'youtu.be')) {
+                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $news->video_url, $match);
+                        if (isset($match[1])) {
+                            $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                        }
+                    } elseif (str_contains($news->video_url, 'vimeo.com')) {
+                        preg_match('/(\d+)/', $news->video_url, $match);
+                        if (isset($match[0])) {
+                            $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
+                        }
+                    }
+                @endphp
+
+                @if($embedUrl)
+                    <div class="fc-detail-video-wrapper">
+                        <iframe src="{{ $embedUrl }}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                @endif
+
+                @elseif($news->image) {{-- Jika tidak ada video, tampilkan gambar seperti biasa --}}
+                    <div class="fc-detail-image-wrapper">
+                        <img src="{{ asset('storage/' . $news->image) }}" alt="Gambar terkait: {{ $news->title }}" class="fc-detail-image">
+                    </div>
+                @endif
 
                 <div class="content-news">
                     <p>{!! $news->content_news !!}</p>

@@ -73,10 +73,36 @@
                     </p>
                 </div>
 
-                @if($article->image)
-                    <div class="fc-article-image-wrapper">
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}"
-                            class="fc-article-image">
+            @if($article->video_url)
+                {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
+                @php
+                    $embedUrl = '';
+                    if (str_contains($article->video_url, 'youtube.com') || str_contains($article->video_url, 'youtu.be')) {
+                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $article->video_url, $match);
+                        if (isset($match[1])) {
+                            $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                        }
+                    } elseif (str_contains($article->video_url, 'vimeo.com')) {
+                        preg_match('/(\d+)/', $article->video_url, $match);
+                        if (isset($match[0])) {
+                            $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
+                        }
+                    }
+                @endphp
+
+                @if($embedUrl)
+                    <div class="fc-detail-video-wrapper">
+                        <iframe src="{{ $embedUrl }}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                @endif
+
+                @elseif($article->image) {{-- Jika tidak ada video, tampilkan gambar seperti biasa --}}
+                    <div class="fc-detail-image-wrapper">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}" class="fc-detail-image">
                     </div>
                 @endif
 

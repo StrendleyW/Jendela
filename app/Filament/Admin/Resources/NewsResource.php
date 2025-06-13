@@ -50,6 +50,11 @@ public static function form(Form $form): Form
                 ->directory('images')
                 ->required(),
 
+            Forms\Components\TextInput::make('video_url')
+                ->label('URL Video (YouTube atau Vimeo)')
+                ->url() // Menambahkan validasi bahwa input harus berupa URL
+                ->helperText('Tempelkan URL lengkap video dari YouTube atau Vimeo di sini.'),
+
             Forms\Components\DateTimePicker::make('published_at')
                 ->required(),
 
