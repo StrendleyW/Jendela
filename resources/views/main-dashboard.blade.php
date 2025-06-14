@@ -23,9 +23,11 @@
                     </div>
                     <div class="search-container">
                         <form action="{{ route('news.search') }}" method="GET" class="search-form">
-                            <input type="text" name="keyword" placeholder="Search news..."
-                                value="{{ request('keyword') ?? '' }}" class="search-input">
-                            <button type="submit" class="search-button">&#128269;</button>
+                            <input type="text" name="keyword" placeholder="Search news..." class="search-input">
+                            {{-- Ganti emoji dengan ikon dari Font Awesome --}}
+                            <button type="submit" class="search-button">
+                                <i class="fas fa-magnifying-glass"></i>
+                            </button>
                         </form>
                     </div>
                 </div>

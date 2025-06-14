@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->registration()
+            // ->registration() /*------UNCOMMENT JIKA INGIN REGISTRASI------*/
             ->brandName('Jendela Admin')
             ->colors([
                 'primary' => Color::Blue,

@@ -10,10 +10,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\Str; // Sudah benar ada
-use Filament\Forms\Set;    // Sudah benar ada
+use Illuminate\Support\Str; 
+use Filament\Forms\Set;    
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Section;
 
 class FactCheckArticleResource extends Resource
 {
@@ -42,6 +44,13 @@ class FactCheckArticleResource extends Resource
                     ->directory('fact-check-images')
                     ->visibility('public')
                     ->label('Gambar Utama'),
+
+                Textarea::make('image_caption')
+                ->label('Caption Gambar')
+                ->rows(3) 
+                ->helperText('Tuliskan deskripsi atau sumber/kredit untuk gambar di atas.')
+                ->maxLength(100)
+                ->required(),
 
                 Forms\Components\TextInput::make('video_url')
                     ->label('URL Video (YouTube atau Vimeo)')

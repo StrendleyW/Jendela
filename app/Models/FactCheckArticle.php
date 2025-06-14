@@ -13,6 +13,7 @@ class FactCheckArticle extends Model
         'title',
         'slug',
         'image',
+        'image_caption',
         'video_url',
         'claim_excerpt',
         'full_content',
