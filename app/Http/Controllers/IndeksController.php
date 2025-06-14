@@ -32,7 +32,7 @@ class IndeksController extends Controller
         }
 
         // Eksekusi query dengan paginasi
-        $newsList = $query->paginate(15)->withQueryString();
+        $newsList = $query->paginate(10)->withQueryString();
 
         // Ambil semua kategori untuk dropdown filter & navigasi
         $allCategories = Category::orderBy('name', 'asc')->get();

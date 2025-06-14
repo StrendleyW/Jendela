@@ -6,23 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->string('video_url')->nullable()->after('image');
+            $table->text('image_caption')->nullable()->after('image');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('video_url');
+            $table->dropColumn('image_caption');
         });
     }
 };

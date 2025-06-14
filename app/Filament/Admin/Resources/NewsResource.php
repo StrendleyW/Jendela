@@ -13,6 +13,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Section;
 
 class NewsResource extends Resource
 {
@@ -48,6 +50,13 @@ public static function form(Form $form): Form
                 ->image()
                 ->disk('public') 
                 ->directory('images')
+                ->required(),
+
+            Textarea::make('image_caption')
+                ->label('Caption Gambar')
+                ->rows(3) // Atur tinggi field input
+                ->helperText('Tuliskan deskripsi atau sumber/kredit untuk gambar di atas.')
+                ->maxLength(100)
                 ->required(),
 
             Forms\Components\TextInput::make('video_url')

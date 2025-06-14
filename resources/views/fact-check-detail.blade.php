@@ -73,37 +73,40 @@
                     </p>
                 </div>
 
-            @if($article->video_url)
-                {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
-                @php
-                    $embedUrl = '';
-                    if (str_contains($article->video_url, 'youtube.com') || str_contains($article->video_url, 'youtu.be')) {
-                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $article->video_url, $match);
-                        if (isset($match[1])) {
-                            $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                @if($article->video_url)
+                    {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
+                    @php
+                        $embedUrl = '';
+                        if (str_contains($article->video_url, 'youtube.com') || str_contains($article->video_url, 'youtu.be')) {
+                            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $article->video_url, $match);
+                            if (isset($match[1])) {
+                                $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                            }
+                        } elseif (str_contains($article->video_url, 'vimeo.com')) {
+                            preg_match('/(\d+)/', $article->video_url, $match);
+                            if (isset($match[0])) {
+                                $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
+                            }
                         }
-                    } elseif (str_contains($article->video_url, 'vimeo.com')) {
-                        preg_match('/(\d+)/', $article->video_url, $match);
-                        if (isset($match[0])) {
-                            $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
-                        }
-                    }
-                @endphp
+                    @endphp
 
-                @if($embedUrl)
-                    <div class="fc-detail-video-wrapper">
-                        <iframe src="{{ $embedUrl }}" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                @endif
+                    @if($embedUrl)
+                        <div class="fc-detail-video-wrapper">
+                            <iframe src="{{ $embedUrl }}" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    @endif
 
                 @elseif($article->image) {{-- Jika tidak ada video, tampilkan gambar seperti biasa --}}
                     <div class="fc-detail-image-wrapper">
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}" class="fc-detail-image">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="Gambar terkait: {{ $article->title }}"
+                            class="fc-detail-image">
                     </div>
+                    <p class="image-caption">
+                        {{ $news->image_caption }}
+                    </p>
                 @endif
 
                 @if($article->claim_excerpt)
@@ -128,20 +131,21 @@
                         /**
                         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                        
+
                         var disqus_config = function () {
                             this.page.url = '{{ url()->current() }}';  // URL Halaman Cek Fakta
                             this.page.identifier = 'fact-check-{{ $article->id }}'; // ID Unik untuk Cek Fakta
                         };
-                        
-                        (function() { // DON'T EDIT BELOW THIS LINE
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://jendelaberita.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
+
+                        (function () { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://jendelaberita.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
                         })();
                     </script>
-                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                            powered by Disqus.</a></noscript>
                 </div>
                 {{-- AKHIR BAGIAN KOMENTAR DISQUS --}}
 

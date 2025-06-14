@@ -10,18 +10,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class News extends Model
 {
-    // news<>media
-    // public function media(): HasMany
-    // {
-    //     return $this->hasMany(Media::class);
-    // }
-
-    // news<>media
-    // public function category(): HasOneOrMany
-    // {
-    //     return $this->hasOnOrMany(Media::class);
-    // }
-    
     protected static function boot()
 {
     parent::boot();
@@ -42,6 +30,7 @@ class News extends Model
     'name',
     'content_news',
     'image',
+    'image_caption',
     'video_url',
     'published_at',
     'is_top_pick',

@@ -57,7 +57,7 @@
 
                     <span class="separator">&nbsp; > &nbsp;</span>
                     {{-- Judul berita saat ini (bukan link) --}}
-                    <span class="current-page">{{ Str::limit($news->title, 65) }}</span>
+                    <span class="current-page">{{ Str::limit($news->title, 63) }}</span>
                 </div>
 
                 <h1 class="title-news">
@@ -75,36 +75,39 @@
                 </div>
 
                 @if($news->video_url)
-                {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
-                @php
-                    $embedUrl = '';
-                    if (str_contains($news->video_url, 'youtube.com') || str_contains($news->video_url, 'youtu.be')) {
-                        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $news->video_url, $match);
-                        if (isset($match[1])) {
-                            $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                    {{-- Logika untuk mengubah URL biasa menjadi URL embed --}}
+                    @php
+                        $embedUrl = '';
+                        if (str_contains($news->video_url, 'youtube.com') || str_contains($news->video_url, 'youtu.be')) {
+                            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $news->video_url, $match);
+                            if (isset($match[1])) {
+                                $embedUrl = 'https://www.youtube.com/embed/' . $match[1];
+                            }
+                        } elseif (str_contains($news->video_url, 'vimeo.com')) {
+                            preg_match('/(\d+)/', $news->video_url, $match);
+                            if (isset($match[0])) {
+                                $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
+                            }
                         }
-                    } elseif (str_contains($news->video_url, 'vimeo.com')) {
-                        preg_match('/(\d+)/', $news->video_url, $match);
-                        if (isset($match[0])) {
-                            $embedUrl = 'https://player.vimeo.com/video/' . $match[0];
-                        }
-                    }
-                @endphp
+                    @endphp
 
-                @if($embedUrl)
-                    <div class="fc-detail-video-wrapper">
-                        <iframe src="{{ $embedUrl }}" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                @endif
+                    @if($embedUrl)
+                        <div class="fc-detail-video-wrapper">
+                            <iframe src="{{ $embedUrl }}" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    @endif
 
                 @elseif($news->image) {{-- Jika tidak ada video, tampilkan gambar seperti biasa --}}
                     <div class="fc-detail-image-wrapper">
-                        <img src="{{ asset('storage/' . $news->image) }}" alt="Gambar terkait: {{ $news->title }}" class="fc-detail-image">
+                        <img src="{{ asset('storage/' . $news->image) }}" alt="Gambar terkait: {{ $news->title }}"
+                            class="fc-detail-image">
                     </div>
+                    <p class="image-caption">
+                        {{ $news->image_caption }}
+                    </p>
                 @endif
 
                 <div class="content-news">
@@ -140,38 +143,51 @@
 
             </div>
             <aside class="sidebar">
-                <div class="top-picks">
+                {{-- Nav Side --}}
+                <div class="top-picks sidebar-widget">
                     <h3>Top Picks</h3>
-                    <ol>
-                        @foreach ($topPicks as $topNews)
-                            <li>
-                                <span class="nomor">#{{$loop->iteration}}</span>
-                                <span class="judul">
-                                    <a href="/news/{{$topNews->slug}}">
+                    <div class="widget-content">
+                        @foreach ($topPicks as $key => $topNews)
+                            <div class="sidebar-news-item">
+                                {{-- Tampilkan gambar jika ada --}}
+                                @if($topNews->image)
+                                    <a href="/news/{{$topNews->slug}}" class="sidebar-news-image">
+                                        <img src="{{ asset('storage/' . $topNews->image) }}" alt="{{ $topNews->title }}">
+                                    </a>
+                                @else
+                                    <span class="nomor">#{{$key + 1}}</span>
+                                @endif
+                                <div class="sidebar-news-content">
+                                    <a href="/news/{{$topNews->slug}}" class="judul">
                                         {{ $topNews->title }}
                                     </a>
-                                </span>
-                            </li>
+                                    <span class="sidebar-news-date">{{ $topNews->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
                         @endforeach
-                    </ol>
-                    <button class="btn-selengkapnya"><a href="#">Lihat Selengkapnya →</a></button>
+                    </div>
+                    <a href="/top-picks" class="btn-selengkapnya">Lihat Selengkapnya →</a>
                 </div>
-                {{-- quick nav side --}}
-                <div class="new-news">
-                    <h3>Berita Terbaru</h3>
-                    <ol>
+                <div class="new-news sidebar-widget">
+                    <h3>Latest News</h3>
+                    <div class="widget-content">
                         @foreach ($latestNews as $latest)
-                            <li>
-                                <span class="nomor">#{{$loop->iteration}}</span>
-                                <span class="judul">
-                                    <a href="/news/{{$latest->slug}}">
+                            <div class="sidebar-news-item">
+                                @if($latest->image)
+                                    <a href="/news/{{$latest->slug}}" class="sidebar-news-image">
+                                        <img src="{{ asset('storage/' . $latest->image) }}" alt="{{ $latest->title }}">
+                                    </a>
+                                @endif
+                                <div class="sidebar-news-content">
+                                    <a href="/news/{{$latest->slug}}" class="judul">
                                         {{ $latest->title }}
                                     </a>
-                                </span>
-                            </li>
+                                    <span class="sidebar-news-date">{{ $latest->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
                         @endforeach
-                    </ol>
-                    <button class="btn-selengkapnya"><a href="#">Lihat Selengkapnya →</a></button>
+                    </div>
+                    <a href="/indeks" class="btn-selengkapnya">Lihat Selengkapnya →</a>
                 </div>
             </aside>
         </div>
