@@ -18,13 +18,11 @@ return new class extends Migration
             $table->string('writer');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
             $table->text('content_news');
-            // $table->dateTime('publisher_date'); 
             $table->string('image')->nullable(); // path gambar
+            $table->string('video_url')->nullable();
             $table->boolean('is_top_pick')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
-            // $table->unsignedBigInteger('category_id');
-            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); //Referencing the id from categories table
         });
     }
 

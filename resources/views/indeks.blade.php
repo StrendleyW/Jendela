@@ -50,7 +50,6 @@
                 <div class="article-list">
                     <div class="filter-container">
                         <form action="{{ route('news.index') }}" method="GET" id="filter-form">
-                            {{-- Filter Kategori --}}
                             <div class="filter-group">
                                 <select name="category" onchange="this.form.submit()">
                                     <option value="">Semua Kategori</option>
@@ -62,13 +61,11 @@
                                 </select>
                             </div>
 
-                            {{-- Filter Tanggal --}}
                             <div class="filter-group">
                                 <input type="date" name="date" value="{{ $selectedDate ?? '' }}"
                                     onchange="this.form.submit()">
                             </div>
 
-                            {{-- Tombol untuk Hapus Filter --}}
                             <a href="{{ route('news.index') }}" class="clear-filter-btn">Hapus Filter</a>
                         </form>
                     </div>

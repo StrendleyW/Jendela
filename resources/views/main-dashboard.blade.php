@@ -132,7 +132,6 @@
 
     </div>
     </div>
-    <script src="js/script/dateTime.js"></script>
     <script src="{{ asset('js/script/aboutUs.js') }}" defer></script>
 </body>
 <footer class="site-footer">

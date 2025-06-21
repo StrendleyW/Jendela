@@ -12,13 +12,11 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        // Ambil berita yang termasuk dalam kategori ini
-        // Urutkan berdasarkan yang terbaru (published_at atau created_at)
-        // Gunakan paginate() untuk pembagian halaman
+
         $newsList = News::where('category_id', $category->id)
                         ->where('published_at', '<=', now()) // Hanya tampilkan yang sudah dipublish
                         ->orderBy('published_at', 'desc')
-                        ->paginate(10); // Ganti 10 dengan jumlah berita per halaman yang diinginkan
+                        ->paginate(10); 
 
         // Ambil juga kategori untuk navigasi 
         $navCategories = Category::all();

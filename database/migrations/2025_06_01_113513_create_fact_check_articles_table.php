@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
+            $table->text('image_caption')->nullable();
             $table->text('claim_excerpt');
             $table->longText('full_content');
             $table->string('verdict'); // Contoh: 'hoax', 'fact', 'misleading', 'clarification'

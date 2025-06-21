@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     @empty
-                        <p>Belum ada berita dalam kategori ini.</p> {{-- Pesan jika tidak ada berita --}}
+                        <p>Belum ada berita dalam kategori ini.</p> 
                     @endforelse
                 </div>
                 <div class="pagination-links">
