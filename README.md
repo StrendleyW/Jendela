@@ -87,7 +87,7 @@ Pastikan server lokal Anda (seperti XAMPP, Laragon, atau Valet) memenuhi persyar
 -   **Halaman Publik**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 -   **Panel Admin**: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
 
-8. **Gunakan kredensial berikut untuk login sebagai superadmin**
+8. **Gunakan kredensial berikut untuk login sebagai admin di panel admin**
 
 -   **Email:** `admin12345@gmail.com`
 -   **Password:** `admin12345`
